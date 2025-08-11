@@ -33,8 +33,7 @@ INSERT INTO assets (name, Ticker) VALUES
 ('Banco do Brasil', 'BBAS3'),
 ('Marfrig', 'MRFG3'),
 ('SLC Agrícola', 'SLCE3'),
-('Gold', '-'),
-('Soy', '-'),
-('Steel', '-'),
-('Oil', '-'),
-('USD', '-');
+('Gold', 'GC=F'),
+('Soy', 'ZS=F'),
+('Oil', 'CL=F'),
+('USD', 'USDBRL=X');

@@ -19,3 +19,10 @@ class Connector():
 
         cursor.execute(insert_query)
         self.connection.commit()
+
+    def insert_price(self, date, price, openingOrClosing, assetName):
+        cursor = self.connection.cursor()
+        insert_query = f'INSERT INTO prices (date, price, openingOrClosing, assetName) VALUES ("{date}", {price}, "{openingOrClosing}", "{assetName}");'
+
+        cursor.execute(insert_query)
+        self.connection.commit()

@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS news(
 
 INSERT INTO assets (name, Ticker) VALUES
 ('Banco do Brasil', 'BBAS3'),
-('Natura', 'NATU3'),
-('Locaweb', 'LWSA3'),
+('Marfrig', 'MRFG3'),
+('SLC Agrícola', 'SLCE3'),
 ('Gold', '-'),
 ('Soy', '-'),
 ('Steel', '-'),

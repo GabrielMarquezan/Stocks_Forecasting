@@ -26,3 +26,13 @@ class Connector():
 
         cursor.execute(insert_query)
         self.connection.commit()
+
+    def read_emotions_and_date(self, assetName):
+        cursor = self.connection.cursor()
+        cursor.execute(f'SELECT date, emotion FROM news WHERE assetName = "{assetName}" ORDER BY date ASC;')
+        return cursor.fetchall()
+    
+    def read_asset_history(self, assetName):
+        cursor = self.connection.cursor()
+        cursor.execute(f'SELECT date, price, openingOrClosing FROM prices WHERE assetName = "{assetName}" ORDER BY date ASC;')
+        return cursor.fetchall()

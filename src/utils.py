@@ -35,7 +35,7 @@ def find_nearest_data(date, data_list, emotion_or_prices):
         for data in data_list:
             datas_formated_date = datetime.combine(data[0], datetime.min.time())
             current_diff = date_formated - datas_formated_date
-            correct_date = datas_formated_date
+            to_be_used_date = datas_formated_date
 
             if current_diff < timedelta(0):
                 break
@@ -43,11 +43,11 @@ def find_nearest_data(date, data_list, emotion_or_prices):
             if current_diff < smallest_diff:
                 smallest_diff = current_diff
                 nearest_data = data[1] if emotion_or_prices == 'emotion' else [data[1], data[2]]
-                correct_date = datas_formated_date
+                to_be_used_date = datas_formated_date
 
         if emotion_or_prices == 'prices':
             for data in data_list:
-                if datetime.combine(data[0], datetime.min.time()) == correct_date and data[2] != nearest_data[1]:
+                if datetime.combine(data[0], datetime.min.time()) == to_be_used_date and data[2] != nearest_data[1]:
                     nearest_data.append(data[1])
                     nearest_data.append(data[2])
                     break
@@ -63,15 +63,15 @@ def fill_blank_days(emotion_or_prices):
     connector = Connector()
 
     for assetName in assets.keys():
-        print(f"Preenchendo lacunas para {assetName}, {emotion_or_prices}...")
+        print(f"Filling gaps for {assetName}, {emotion_or_prices}...")
         data = connector.read_emotions_and_date(assetName) if emotion_or_prices == 'emotion' else connector.read_asset_history(assetName)
 
         for date in date_list:
             if date not in [datetime.strftime(item[0], '%Y-%m-%d') for item in data]:
-                print(f"Data {date} não encontrada, preenchendo com o mais próximo...")
+                print(f"Date {date} not found, filling with nearest...")
                 nearest_data = find_nearest_data(date, data, emotion_or_prices)
                 if emotion_or_prices == 'emotion':
-                    connector.insert_news("Preenchimento de lacuna", date, nearest_data, assetName)
+                    connector.insert_news("Filling gap", date, nearest_data, assetName)
                 else:
                     connector.insert_price(date, nearest_data[2], nearest_data[3], assetName)
                     connector.insert_price(date, nearest_data[0], nearest_data[1], assetName)

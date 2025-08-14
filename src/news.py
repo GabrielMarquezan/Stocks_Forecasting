@@ -20,9 +20,9 @@ def collect_news():
 
             title = article['title']
             date = article['publishedAt'][0:10]
-            emotion = input(f"Qual a emoção do artigo '{title}'?\n")
+            emotion = input(f"What's the emotion of the article '{title}'?\n")
 
             if emotion != '':
                 Connector().insert_news(title, date, emotion, assetName)
             else:
-                print("Emoção não informada, artigo não inserido.")
+                print("Emotion not informed, article not inserted.")

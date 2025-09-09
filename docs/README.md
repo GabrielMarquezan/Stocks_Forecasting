@@ -5,11 +5,13 @@ This project collects and analyzes news data for the brazilian companies Banco d
 ## Features Used
 - **Emotion**: Sentiment derived from news articles.
 - **Opening-Closing Delta**: Difference between stock opening and closing prices.
+- **Daily High**: Highest price in a day.
+- **Daily Low**: Lowest price in a day.
+- **Daily Volume**: Trading volume in a day.
 - **Oil Price**: Crude oil market prices.
 - **Soy Price**: Soybean market prices.
 - **Gold Price**: Gold market prices.
 - **USD/BRL**: Exchange rate between US Dollar and Brazilian Real.
-- **Selic**: Brazil's benchmark interest rate.
 
 ## Project Workflow
 
@@ -21,7 +23,7 @@ This project collects and analyzes news data for the brazilian companies Banco d
 - Perform emotion classification on the news articles using Large Language Models (LLMs) to determine sentiment.
 
 ### Step 3: Additional Feature Collection
-- Gather data for the following features: Opening-Closing Delta, Oil Price, Soy Price, Gold Price, Steel Price, USD/BRL, and Selic.
+- Gather data for the following features: Opening-Closing Delta, Daily High, Daily Low, Daily Volume, Oil Price, Soy Price, Gold Price, Steel Price and USD/BRL.
 - Store these features in the MySQL database.
 
 ### Step 4: Data Structuring

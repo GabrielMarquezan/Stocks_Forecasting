@@ -24,16 +24,18 @@ def collect_news():
                                                   sort_by='relevancy')
 
             for article in all_articles['articles']:
-                for i in range(0, 5):
-                    sentiment = analyze_sentiment(news_title=article.title,
-                                               news_body=article.content,
-                                               stock_name=ticker)
-                    if sentiment != 'irrelevant':
-                        connector.insert_news(title=article.title,
-                                              body_text=article.content,
-                                              date=article.publishedAt,
-                                              isNational=isNational,
-                                              emotion=sentiment,
-                                              assetTicker=ticker)
+                sentiment = analyze_sentiment(news_title=article['title'],
+                                           news_body=article['content'],
+                                           stock_name=ticker)
+                if sentiment != 'irrelevant':
+                    connector.insert_news(title=article['title'],
+                                          body_text=article['content'],
+                                          date=article['publishedAt'],
+                                          isNational=isNational,
+                                          emotion=sentiment,
+                                          assetTicker=ticker)
 
-                time.sleep(60)
+                time.sleep(70)
+
+if __name__ == '__main__':
+    collect_news()

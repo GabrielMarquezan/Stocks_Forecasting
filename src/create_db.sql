@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS stock_forecasting;
-USE stock_forecasting;
+CREATE DATABASE IF NOT EXISTS stock_forecasting_2;
+USE stock_forecasting_2;
 
 CREATE TABLE IF NOT EXISTS assets (
     ticker VARCHAR(100) PRIMARY KEY,

@@ -1,7 +1,6 @@
 from google import genai
+import os
 from dotenv import load_dotenv
-
-load_dotenv()
 
 def analyze_sentiment(news_title, news_body, stock_name):
     context = f"Assume you are a investor who invests in brazilian stocks. "
@@ -10,10 +9,11 @@ def analyze_sentiment(news_title, news_body, stock_name):
     restriction = f"Do not respond anything else!"
     news = f"\n\nTitle: {news_title}\n\n Body Text: {news_body}"
     
-    client = genai.Client()
+    load_dotenv()
+    client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
     
     response = client.models.generate_content(
-        model="gemini-2.5-pro",
+        model="gemini-2.5-flash",
         contents=context + task + response_structure + restriction + news
     )
 

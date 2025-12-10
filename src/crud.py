@@ -10,7 +10,7 @@ class Connector():
             host='localhost',
             user='root',
             password=os.getenv('MYSQL_PASSWORD'),
-            database='stock_forecasting'
+            database='stock_forecasting_2'
         )
 
         self.cursor = self.connection.cursor()

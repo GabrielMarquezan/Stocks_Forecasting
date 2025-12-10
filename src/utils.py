@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from crud import Connector
 
 assets = {'Banco do Brasil': 'BBAS3', 'Marfrig': 'MRFG3', 'SLC Agrícola': 'SLCE3'}
+languages = ['pt', 'en']
 
 initial_date = '2025-07-11'
 final_date = '2025-08-11'

@@ -1,0 +1,10 @@
+1 - News extraction (global and national)
+
+2 - LLM discriminates between relevant or not
+
+3 - if relevant, LLM classifies the emotion
+
+4 - News goes to the database with a new attribute indicating if it's global or not
+
+
+All of this must be automatized using Chat GPT API

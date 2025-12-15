@@ -2,7 +2,7 @@ name: collect data
 
 on: 
   schedule:
-    - cron: '1 0 11 * *' # Runs on 00:01 at every 11th day of each month
+    - cron: '1 0 16 * *' # Runs on 00:01 at every 11th day of each month
 
 jobs:
   build:

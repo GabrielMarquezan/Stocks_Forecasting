@@ -7,11 +7,10 @@ from utils import assets, languages, initial_date, final_date
 from llm import analyze_sentiment
 import time
 
-load_dotenv(override=True)
+load_dotenv()
 
 def collect_news():
     newsapi = NewsApiClient(api_key=os.getenv('NEWS_API_KEY'))
-    file_exists = os.path.isfile('news.csv')
     all_articles = []
     #connector = Connector()
 
@@ -30,13 +29,14 @@ def collect_news():
                                            news_body=article['content'],
                                            stock_name=ticker)
                 if sentiment != 'irrelevant':
-                    news = pd.DataFrame({'title': article['title'],
-                                         'body_text': article['content'],
-                                         'date': article['publishedAt'],
-                                         'isNational': isNational,
-                                         'emotion': sentiment,
-                                         'assetTicker': ticker}
+                    news = pd.DataFrame({'title': [article['title']],
+                                         'body_text': [article['content']],
+                                         'date': [article['publishedAt']],
+                                         'isNational': [isNational],
+                                         'emotion': [sentiment],
+                                         'assetTicker': [ticker]}
                     )
+                    file_exists = os.path.isfile('news.csv')
                     news.to_csv('news.csv', mode='a', header=not file_exists, index=False)
                     
                     #connector.insert_news(title=article['title'],

@@ -13,9 +13,10 @@ def analyze_sentiment(news_title, news_body, stock_name):
     client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
     
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-2.5-flash-lite",
         contents=context + task + response_structure + restriction + news
     )
 
-    response.replace('*', '')
-    return response
+    text = response.text
+    text.replace('*', '')
+    return text

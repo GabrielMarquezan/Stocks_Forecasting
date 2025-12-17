@@ -4,7 +4,7 @@ from crud import Connector
 assets = {'Banco do Brasil': 'BBAS3', 'Marfrig': 'MRFG3', 'SLC Agrícola': 'SLCE3'}
 languages = ['pt', 'en']
 
-final_date = datetime.today().strftime('%Y-%m-%d')
+final_date = datetime.strptime(datetime.today().strftime('%Y-%m-%d'), '%Y-%m-%d')
 initial_date = datetime.today() - timedelta(days=30)
 
 def generate_list_of_dates():

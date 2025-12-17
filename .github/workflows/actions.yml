@@ -2,7 +2,7 @@ name: collect data
 
 on: 
   schedule:
-    - cron: '1 0 11 * *' # Runs on 00:01 at every 11th day of each month
+    - cron: '1 0 17 * *' # Runs on 00:01 at every 17th day of each month
 
 jobs:
   build:
@@ -26,10 +26,10 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
-        run: python3 news.py
+        run: python3 src/news.py
 
       - name: collect prices
-        run: python3 collectPrices.py
+        run: python3 src/collectPrices.py
 
       - name: commit
         run: |
